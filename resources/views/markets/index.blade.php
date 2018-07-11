@@ -1,11 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-	<head>
-	</head>
-	<body>
 		@extends('layouts.app')
 		@section('main')
+		<a href="{{ route('markets.create') }}">Cadastrar</a>
 		<ul>
 			@foreach($markets as $market)
 				<li>
@@ -16,6 +11,7 @@
 			@endforeach
 		</ul>
 		{{ $markets->links() }}
-		@endsection			
-	</body>
-</html>	
+		@endsection	
+
+
+		

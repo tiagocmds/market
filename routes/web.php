@@ -13,5 +13,4 @@
 
 Route::get('/', 'MarketController@index');
 Route::resource('markets', 'MarketController');
-Route::get('/', 'FarmController@index');
 Route::resource('farms', 'FarmController');

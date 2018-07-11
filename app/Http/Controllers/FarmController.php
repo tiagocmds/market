@@ -14,7 +14,7 @@ class FarmController extends Controller
      */
     public function index()
     {
-       
+      
     }
 
     /**
