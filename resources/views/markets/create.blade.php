@@ -1,15 +1,26 @@
 
 @extends('layouts.app')
 @section('main')
-<form action="{{ route('markets.store') }}" method="post">
+<form  class ="form-inline" action="{{ route('markets.store') }}" method="post">
 	{{ csrf_field() }}
-	
-	<label for="name">Market Name</label>
-	<input type="text" name="name">
-	<label for="city">Market City</label>
-	<input type="text" name="city">
-	<label for="website">Market WebSite</label>
-	<input type="text" name="website">
-	<button type="submit" class="btn btn-default">Create</button>
+	<div class="form-group">
+	<h4><label class="label label-default" for="name">Market Name</label></h4>
+	<input type="text"
+	class="form-control" name="name" placeholder="Nome do Mercado" :focus>
+	</div>
+	<br>
+	<div class="form-group">
+	<h4><label class="label label-default" for="city">Market City</label></h4>
+	<input type="text" class="form-control" name="city" placeholder="Nome da Cidade">
+	</div>
+	<br>
+	<div class="form-group">
+	<h4><label class="label label-default" for="website">Market WebSite</label></h4>
+	<input type="text" class="form-control" name="website" placeholder="Nome do Website">
+	</div>
+	<br>
+	<br>
+	<button type="submit" class="btn btn-success">Create</button>
+	<a class="btn btn-danger" href="{{route('markets.index')}}">Voltar</a>
 </form>	
 @endsection	

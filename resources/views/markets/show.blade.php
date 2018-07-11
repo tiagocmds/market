@@ -1,10 +1,13 @@
 @extends('layouts.app')
 @section('main')
-<h1>{{ $market->name }}</h1>
-
-<ul>
-		<li>Location City: {{ $market->city }} </li>
-		<li>Website: {{ $market->website }}</li>
-</ul>
+	<div class="panel panel-primary">
+	  <div class="panel-heading"><h3>{{ $market->name }}</h3></div>
+	  <div class="panel-body">
+	    <b>Location City:</b> {{ $market->city }} 
+	    <br>
+	    <b>Website:</b> {{ $market->website }}
+	  </div>
+	</div>
+	<a class="btn btn-primary" href="{{route('markets.index')}}">Voltar</a>
 
 @endsection		

@@ -1,16 +1,19 @@
 		@extends('layouts.app')
 		@section('main')
-		<a href="{{ route('markets.create') }}">Cadastrar</a>
-		<ul>
+		
+		
 			@foreach($markets as $market)
-				<li>
+				
 					<a href="{{ route('markets.show', $market) }}">
-						{{ $market->name }}
+						{{ $market->name }}<br>
 					</a>
-				</li>
+				
 			@endforeach
-		</ul>
-		{{ $markets->links() }}
+			    {{ $markets->links() }}
+		<br>
+		<a class="btn btn-primary" href="{{ route('markets.create') }}">Cadastrar</a>
+
+		<br>
 		@endsection	
 
 
