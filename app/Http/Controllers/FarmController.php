@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Farm;
 use Illuminate\Http\Request;
-
+use App\Market;
 class FarmController extends Controller
 {
     /**
@@ -14,7 +14,9 @@ class FarmController extends Controller
      */
     public function index()
     {
+      $farms = Farm::orderBy('name','asc')->paginate(5);
       
+        return view('farms.index', ['farms' => $farms]);
     }
 
     /**
@@ -24,7 +26,7 @@ class FarmController extends Controller
      */
     public function create()
     {
-        
+        return view('farms.create');
     }
 
     /**
@@ -35,7 +37,13 @@ class FarmController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request,[
+            'name' => 'bail|required|unique:farms|max:155',
+            'website' => 'bail|required',
+            'city' => 'bail|required',           
+        ]);
+        Farm::create($request->all());
+        return redirect('farms');
     }
 
     /**
@@ -46,7 +54,7 @@ class FarmController extends Controller
      */
     public function show(Farm $farm)
     {
-        
+        return view('farms.show',['farm' => $farm]);
     }
 
     /**
@@ -57,7 +65,8 @@ class FarmController extends Controller
      */
     public function edit(Farm $farm)
     {
-        //
+        $markets = Market::get()->pluck('name', 'id')->sortBy('name');
+        return view('farms.edit', compact('farm', 'markets'));
     }
 
     /**
@@ -69,7 +78,9 @@ class FarmController extends Controller
      */
     public function update(Request $request, Farm $farm)
     {
-        //
+        $farm->update($request->all());
+        $farm->markets()->sync($request->markets);
+        return redirect('farms');
     }
 
     /**

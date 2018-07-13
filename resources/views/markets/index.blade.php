@@ -12,8 +12,9 @@
 			    {{ $markets->links() }}
 		<br>
 		<a class="btn btn-primary" href="{{ route('markets.create') }}">Cadastrar</a>
-
 		<br>
+		
+		
 		@endsection	
 
 

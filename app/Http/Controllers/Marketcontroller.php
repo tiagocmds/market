@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Market;
 use Illuminate\Http\Request;
+use App\Farm;
 
 class Marketcontroller extends Controller
 {
@@ -15,9 +16,7 @@ class Marketcontroller extends Controller
     public function index()
     {
         $markets = Market::orderBy('name','asc')->paginate(5);
-      
         return view('markets.index', ['markets' => $markets]);
-
     }
 
     /**
@@ -28,7 +27,6 @@ class Marketcontroller extends Controller
     public function create()
     {
        return view('markets.create');
-
     }
 
     /**
@@ -67,7 +65,9 @@ class Marketcontroller extends Controller
      */
     public function edit(Market $market)
     {
-        //
+        $farms = Farm::get()->pluck('name', 'id')->sortBy('name');
+        //dd($farms);
+        return view('markets.edit', compact('market', 'farms'));   
     }
 
     /**
@@ -79,7 +79,9 @@ class Marketcontroller extends Controller
      */
     public function update(Request $request, Market $market)
     {
-        //
+        $market->update($request->all());
+        $market->farms()->sync($request->farms);
+        return redirect('markets');
     }
 
     /**
