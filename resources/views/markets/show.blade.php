@@ -9,4 +9,5 @@
 	  </div>
 	</div>
 	<a class="btn btn-primary" href="{{route('markets.index')}}">Voltar</a>
+	<a class="btn btn-primary" href="{{route('markets.edit', $market)}}">Editar</a>
 @endsection		

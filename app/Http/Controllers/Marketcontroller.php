@@ -66,7 +66,6 @@ class Marketcontroller extends Controller
     public function edit(Market $market)
     {
         $farms = Farm::get()->pluck('name', 'id')->sortBy('name');
-        //dd($farms);
         return view('markets.edit', compact('market', 'farms'));   
     }
 

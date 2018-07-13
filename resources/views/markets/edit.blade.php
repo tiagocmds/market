@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('main')
+	
 	<form action="{{ route('markets.update', $market) }}" method="post">
 		{{ method_field('patch') }}
 		@foreach ($farms as $id => $farm)
@@ -28,7 +29,7 @@
 		</div>
 		<br>
 		<br>
-		<button type="submit" class="btn btn-success">Create</button>
-		<a class="btn btn-danger" href="{{route('markets.index')}}">Voltar</a>
+		<button type="submit" class="btn btn-success">Editar</button>
+		<a class="btn btn-danger" href="{{route('markets.show', $market)}}">Voltar</a>
 	</form>
 @endsection	
