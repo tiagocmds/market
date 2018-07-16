@@ -14,8 +14,7 @@ class FarmController extends Controller
      */
     public function index()
     {
-      $farms = Farm::orderBy('name','asc')->paginate(5);
-      
+        $farms = Farm::orderBy('name','asc')->paginate(5);
         return view('farms.index', ['farms' => $farms]);
     }
 

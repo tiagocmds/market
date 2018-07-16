@@ -6,6 +6,13 @@
 	    <b>Location City:</b> {{ $market->city }} 
 	    <br>
 	    <b>Website:</b> {{ $market->website }}
+	    <br>
+	    <b>Fazendas Associadas:</b>
+	    @foreach($market->farms()->get() as $farm)
+        <label for ='{{ $farm }}'>
+        <div class="panel-body">{{$farm->name}}</div>
+        </label>
+ 		@endforeach
 	  </div>
 	</div>
 	<a class="btn btn-primary" href="{{route('markets.index')}}">Voltar</a>
